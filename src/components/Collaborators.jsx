@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     marginLeft: -12, // 이미지를 겹치게 만들기 위해 음수 값 사용
     borderColor: '#fff',
-    borderWidth: 1,
+    borderWidth: 1.2,
   },
   textBold: {
     fontWeight: '600',
