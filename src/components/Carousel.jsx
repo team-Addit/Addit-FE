@@ -10,10 +10,20 @@ import {
 
 const {width} = Dimensions.get('window');
 const ITEM_WIDTH = width * 0.4;
-const ITEM_SPACING = (width - ITEM_WIDTH) / 2; // 왼쪽/오른쪽 padding 포함
+const ITEM_SPACING = (width - ITEM_WIDTH) / 2;
 
-const Carousel = ({data}) => {
+const Carousel = ({data, onFocusChange}) => {
   const scrollX = useRef(new Animated.Value(0)).current;
+
+  const focusIndex = useRef(0);
+  const onScrollEnd = e => {
+    const contentOffsetX = e.nativeEvent.contentOffset.x;
+    const index = Math.round(contentOffsetX / ITEM_WIDTH);
+    if (index !== focusIndex.current) {
+      focusIndex.current = index;
+      onFocusChange(data[index]?.relayId); // 부모에게 포커스된 relayId 전달
+    }
+  };
 
   const renderItem = ({item, index}) => {
     const inputRange = [
@@ -24,20 +34,23 @@ const Carousel = ({data}) => {
 
     const scale = scrollX.interpolate({
       inputRange,
-      outputRange: [0.8, 1, 0.8], // 가운데 아이템만 더 크게
+      outputRange: [0.8, 1, 0.8],
       extrapolate: 'clamp',
     });
+
+    // 첫 번째 tickle의 이미지만 표시
+    const firstTickle = item.tickles[0];
 
     return (
       <View style={{width: ITEM_WIDTH}}>
         <Animated.View style={[styles.imageContainer, {transform: [{scale}]}]}>
-          <Image source={{uri: item.thumbnail}} style={styles.image} />
+          <Image source={{uri: firstTickle.thumbnail}} style={styles.image} />
           <View style={styles.overlay}>
             <Image
-              source={{uri: item.profileImage}}
+              source={{uri: firstTickle.profileImage}}
               style={styles.profileImage}
             />
-            <Text style={styles.nickname}>{item.nickname}</Text>
+            <Text style={styles.nickname}>{firstTickle.nickname}</Text>
           </View>
         </Animated.View>
       </View>
@@ -47,15 +60,16 @@ const Carousel = ({data}) => {
   return (
     <Animated.FlatList
       data={data}
-      keyExtractor={item => item.relayId} // relayId를 key로 사용
+      keyExtractor={item => item.relayId.toString()}
       horizontal
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={{paddingHorizontal: ITEM_SPACING}}
-      snapToInterval={ITEM_WIDTH} // 아이템 간격 고려
+      snapToInterval={ITEM_WIDTH}
       decelerationRate="fast"
       onScroll={Animated.event([{nativeEvent: {contentOffset: {x: scrollX}}}], {
         useNativeDriver: true,
       })}
+      onMomentumScrollEnd={onScrollEnd} // 스크롤 종료 시점에 포커스 변경
       renderItem={renderItem}
     />
   );
