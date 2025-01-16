@@ -12,7 +12,7 @@ const {width} = Dimensions.get('window');
 const ITEM_WIDTH = width * 0.4;
 const ITEM_SPACING = (width - ITEM_WIDTH) / 2;
 
-const Carousel = ({data, onFocusChange}) => {
+const Carousel = ({data, onFocusChange, selectedTickleId}) => {
   const scrollX = useRef(new Animated.Value(0)).current;
 
   const focusIndex = useRef(0);
@@ -38,19 +38,24 @@ const Carousel = ({data, onFocusChange}) => {
       extrapolate: 'clamp',
     });
 
-    // 첫 번째 tickle의 이미지만 표시
-    const firstTickle = item.tickles[0];
+    // 선택된 티클의 데이터
+    const selectedTickle =
+      item.tickles.find(tickle => tickle.tickleId === selectedTickleId) ||
+      item.tickles[0]; //기본 첫번째
 
     return (
       <View style={{width: ITEM_WIDTH}}>
         <Animated.View style={[styles.imageContainer, {transform: [{scale}]}]}>
-          <Image source={{uri: firstTickle.thumbnail}} style={styles.image} />
+          <Image
+            source={{uri: selectedTickle.thumbnail}}
+            style={styles.image}
+          />
           <View style={styles.overlay}>
             <Image
-              source={{uri: firstTickle.profileImage}}
+              source={{uri: selectedTickle.profileImage}}
               style={styles.profileImage}
             />
-            <Text style={styles.nickname}>{firstTickle.nickname}</Text>
+            <Text style={styles.nickname}>{selectedTickle.nickname}</Text>
           </View>
         </Animated.View>
       </View>
@@ -69,7 +74,7 @@ const Carousel = ({data, onFocusChange}) => {
       onScroll={Animated.event([{nativeEvent: {contentOffset: {x: scrollX}}}], {
         useNativeDriver: true,
       })}
-      onMomentumScrollEnd={onScrollEnd} // 스크롤 종료 시점에 포커스 변경
+      onMomentumScrollEnd={onScrollEnd} // 스크롤 종료 시점에 포커스 정함
       renderItem={renderItem}
     />
   );
