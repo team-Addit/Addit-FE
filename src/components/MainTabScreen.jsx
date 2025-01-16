@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import Carousel from '../components/Carousel';
 import Collaborators from './Collaborators';
-import ImageGrid from './ImageGrid';
+import ImageRow from './ImageRow';
 
 const MainTabScreen = ({tabKey, data}) => {
   const [focusedRelayId, setFocusedRelayId] = useState(null);
@@ -41,7 +41,7 @@ const MainTabScreen = ({tabKey, data}) => {
         </Text>
 
         <Carousel
-          data={data} // 데이터 전체를 전달
+          data={data}
           onFocusChange={id => setFocusedRelayId(id)} // 포커스 변경 시 relayId 업데이트
         />
 
@@ -51,7 +51,9 @@ const MainTabScreen = ({tabKey, data}) => {
             count={currentRelay.memberCount}
             images={currentRelay.memberImages}
           />
-          {/* <ImageGrid images={currentRelay.map(tickle => tickle.thumbnail)} /> */}
+          <ImageRow
+            images={currentRelay?.tickles.map(tickle => tickle.thumbnail)}
+          />
         </View>
       </View>
     </ScrollView>
