@@ -6,8 +6,14 @@ import ImageRow from './ImageRow';
 
 const MainTabScreen = ({tabKey, data}) => {
   const [focusedRelayId, setFocusedRelayId] = useState(null);
+  const [selectedTickleId, setSelectedTickleId] = useState(null);
 
-  //첫 렌더링 시 focuseRelayId 설정
+  // ImageRow에서 이미지 선택 시 tickleId 업데이트
+  const handleImageSelect = tickleId => {
+    setSelectedTickleId(tickleId);
+  };
+
+  //첫 렌더링 시 focuseRelayId = 0(기본)
   useEffect(() => {
     if (data.length > 0 && !focusedRelayId) {
       setFocusedRelayId(data[0]?.relayId);
@@ -42,17 +48,19 @@ const MainTabScreen = ({tabKey, data}) => {
 
         <Carousel
           data={data}
-          onFocusChange={id => setFocusedRelayId(id)} // 포커스 변경 시 relayId 업데이트
+          onFocusChange={id => setFocusedRelayId(id)} //relay id
+          selectedTickleId={selectedTickleId} // tickle id
         />
 
         <View style={styles.bgBlue}>
-          <Text style={styles.title}>{currentRelay.relayTitle}</Text>
           <Collaborators
             count={currentRelay.memberCount}
             images={currentRelay.memberImages}
           />
+          <Text style={styles.title}>{currentRelay.relayTitle}</Text>
           <ImageRow
-            images={currentRelay?.tickles.map(tickle => tickle.thumbnail)}
+            data={currentRelay?.tickles}
+            onImageSelect={handleImageSelect}
           />
         </View>
       </View>
@@ -88,6 +96,7 @@ const styles = StyleSheet.create({
     letterSpacing: -0.1,
     fontWeight: '700',
     textAlign: 'center',
+    margin: 8,
   },
   highlight: {
     color: '#4574ec',
