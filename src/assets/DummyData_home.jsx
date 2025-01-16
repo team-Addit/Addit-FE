@@ -16,14 +16,14 @@ export const response_hot = {
         tickles: [
           {
             tickleId: '201',
-            thumbnail: 'https://fakeimg.pl/360x640/00ffff/000000',
+            thumbnail: 'https://fakeimg.pl/360x640/12ff90/ffffff',
             userId: 1001,
             profileImage: 'https://fakeimg.pl/360x640/ff8800/ffffff',
             nickname: '방스타',
           },
           {
             tickleId: '202',
-            thumbnail: 'https://fakeimg.pl/360x640/7700ff/ffffff',
+            t: 'https://fakeimg.pl/360x640/7700ff/ffffff',
             userId: 1002,
             profileImage: 'https://fakeimg.pl/360x640/00cc00/000000',
             nickname: '꾸미왕',
@@ -54,7 +54,7 @@ export const response_hot = {
       {
         relayId: 102,
         relayTitle: '최고의 책상 만들기',
-        tag: '#책상꾸미기',
+        tag: '책상꾸미기',
         memberCount: 25,
         memberImages: [
           'https://s3-alpha-sig.figma.com/img/dbfa/39a5/9ae2ba7976dcc06ae1f424a12c22759d?Expires=1737936000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XVDMdrCHt6Uz7u9q14fpOlY2OJAJd9yMqeRvuXcmcmhyJjVtqX9hQkpn05mJm0pti0qOid7d8oWptWawYx5HQA~-67GkrajQiL1Z2Qnvbk~7Ul4aGpttPGqd49kRY7CNaEtK016vXcMMX6hEJIACke1Ggg8~Bfey29sUMYBeoilrvTeFyrDyc8N985FTHaJbaMg011zsLxLiThMT1oyuIM470d68HMsPGxm1jbeCmnRSIRKz6-DECt2BC-OndLc7j5yrkf4j9mqlBASKE2Qd-tqjrqMA0cToyOekzO2cRZ9YwS4ubP49GPlXZ6GV0-3hCGFTi54H8QYZN4TSLOyvCw__',
@@ -102,7 +102,7 @@ export const response_hot = {
       {
         relayId: 103,
         relayTitle: '창의적인 벽 꾸미기',
-        tag: '#벽꾸미기',
+        tag: '벽꾸미기',
         memberCount: 20,
         memberImages: [
           'https://s3-alpha-sig.figma.com/img/dbfa/39a5/9ae2ba7976dcc06ae1f424a12c22759d?Expires=1737936000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XVDMdrCHt6Uz7u9q14fpOlY2OJAJd9yMqeRvuXcmcmhyJjVtqX9hQkpn05mJm0pti0qOid7d8oWptWawYx5HQA~-67GkrajQiL1Z2Qnvbk~7Ul4aGpttPGqd49kRY7CNaEtK016vXcMMX6hEJIACke1Ggg8~Bfey29sUMYBeoilrvTeFyrDyc8N985FTHaJbaMg011zsLxLiThMT1oyuIM470d68HMsPGxm1jbeCmnRSIRKz6-DECt2BC-OndLc7j5yrkf4j9mqlBASKE2Qd-tqjrqMA0cToyOekzO2cRZ9YwS4ubP49GPlXZ6GV0-3hCGFTi54H8QYZN4TSLOyvCw__',
@@ -150,7 +150,7 @@ export const response_hot = {
       {
         relayId: 104,
         relayTitle: '나만의 정원 만들기',
-        tag: '#정원꾸미기',
+        tag: '정원꾸미기',
         memberCount: 18,
         memberImages: [
           'https://s3-alpha-sig.figma.com/img/dbfa/39a5/9ae2ba7976dcc06ae1f424a12c22759d?Expires=1737936000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XVDMdrCHt6Uz7u9q14fpOlY2OJAJd9yMqeRvuXcmcmhyJjVtqX9hQkpn05mJm0pti0qOid7d8oWptWawYx5HQA~-67GkrajQiL1Z2Qnvbk~7Ul4aGpttPGqd49kRY7CNaEtK016vXcMMX6hEJIACke1Ggg8~Bfey29sUMYBeoilrvTeFyrDyc8N985FTHaJbaMg011zsLxLiThMT1oyuIM470d68HMsPGxm1jbeCmnRSIRKz6-DECt2BC-OndLc7j5yrkf4j9mqlBASKE2Qd-tqjrqMA0cToyOekzO2cRZ9YwS4ubP49GPlXZ6GV0-3hCGFTi54H8QYZN4TSLOyvCw__',
@@ -198,7 +198,7 @@ export const response_hot = {
       {
         relayId: 105,
         relayTitle: '책장 리폼하기',
-        tag: '#책장꾸미기',
+        tag: '책장꾸미기',
         memberCount: 22,
         memberImages: [
           'https://s3-alpha-sig.figma.com/img/dbfa/39a5/9ae2ba7976dcc06ae1f424a12c22759d?Expires=1737936000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=XVDMdrCHt6Uz7u9q14fpOlY2OJAJd9yMqeRvuXcmcmhyJjVtqX9hQkpn05mJm0pti0qOid7d8oWptWawYx5HQA~-67GkrajQiL1Z2Qnvbk~7Ul4aGpttPGqd49kRY7CNaEtK016vXcMMX6hEJIACke1Ggg8~Bfey29sUMYBeoilrvTeFyrDyc8N985FTHaJbaMg011zsLxLiThMT1oyuIM470d68HMsPGxm1jbeCmnRSIRKz6-DECt2BC-OndLc7j5yrkf4j9mqlBASKE2Qd-tqjrqMA0cToyOekzO2cRZ9YwS4ubP49GPlXZ6GV0-3hCGFTi54H8QYZN4TSLOyvCw__',

@@ -1,37 +1,57 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import Carousel from '../components/Carousel';
 import Collaborators from './Collaborators';
 import ImageGrid from './ImageGrid';
 
 const MainTabScreen = ({tabKey, data}) => {
-  const currentData = data && Array.isArray(data) ? data[0] : data;
-  console.log(currentData);
+  const [focusedRelayId, setFocusedRelayId] = useState(null);
+
+  //첫 렌더링 시 focuseRelayId 설정
+  useEffect(() => {
+    if (data.length > 0 && !focusedRelayId) {
+      setFocusedRelayId(data[0]?.relayId);
+    }
+  }, [data, focusedRelayId]);
+
+  // focusedRelayId에 맞는 데이터 찾기
+  const currentRelay = focusedRelayId
+    ? data.find(relay => relay.relayId === focusedRelayId)
+    : null;
+
+  if (!currentRelay) {
+    return <Text>Loading</Text>; // 추후 로딩 처리 필요
+  }
   return (
     <ScrollView style={styles.scrollContainer}>
       <View style={styles.container}>
         <Text style={styles.text}>
           {tabKey === 'popular' ? (
             <>
-              <Text style={styles.highlight}>{`#${currentData.tag}`}</Text>
+              <Text style={styles.highlight}>{`#${currentRelay.tag}`}</Text>
               {' 태그와 관련된 \n 릴레이에 참여해보세요'}
             </>
           ) : (
             <>
               <Text
-                style={styles.highlight}>{`@${currentData.username}님`}</Text>
+                style={styles.highlight}>{`@${currentRelay.username}님`}</Text>
               {'이 참여한 \n릴레이에 동참해보세요'}
             </>
           )}
         </Text>
-        <Carousel data={currentData.tickles} />
+
+        <Carousel
+          data={data} // 데이터 전체를 전달
+          onFocusChange={id => setFocusedRelayId(id)} // 포커스 변경 시 relayId 업데이트
+        />
+
         <View style={styles.bgBlue}>
-          <Text style={styles.title}>{currentData.title}</Text>
+          <Text style={styles.title}>{currentRelay.relayTitle}</Text>
           <Collaborators
-            count={currentData.memberCount}
-            images={currentData.memberImages}
+            count={currentRelay.memberCount}
+            images={currentRelay.memberImages}
           />
-          <ImageGrid images={currentData.ticklesImages} />
+          {/* <ImageGrid images={currentRelay.map(tickle => tickle.thumbnail)} /> */}
         </View>
       </View>
     </ScrollView>
@@ -42,7 +62,7 @@ export default MainTabScreen;
 
 const styles = StyleSheet.create({
   scrollContainer: {
-    flex: 1, // 화면 전체를 사용하기 위해 flex 설정
+    flex: 1,
   },
   container: {
     marginTop: 20,
