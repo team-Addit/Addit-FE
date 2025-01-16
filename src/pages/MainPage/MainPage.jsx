@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {TabView, TabBar} from 'react-native-tab-view';
 import MainTabScreen from '../../components/MainTabScreen';
 import {response_hot} from '../../assets/DummyData_home';
+import Logo from '../../assets/logo_temp.png';
 
 const MainPage = () => {
   const [index, setIndex] = useState(0);
@@ -43,7 +44,7 @@ const MainPage = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
-        <Text>로고 위치</Text>
+        <Image source={Logo} style={styles.logo} />
       </View>
       <TabView
         navigationState={{index, routes: tabData}}
@@ -73,20 +74,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   logoContainer: {
-    backgroundColor: '#e0e0e0',
-    height: 60,
+    marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  logoText: {
-    fontSize: 14,
-    color: '#333',
+  logo: {
+    height: 26,
+    resizeMode: 'contain',
   },
   tabBar: {
     backgroundColor: 'transparent',
     height: 48,
     justifyContent: 'center',
-    width: '50%',
+    width: '30%',
     alignSelf: 'center',
     flexDirection: 'row',
   },

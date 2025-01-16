@@ -37,7 +37,9 @@ const ImageRow = ({data, onImageSelect}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    marginVertical: 10,
+  },
   row: {
     justifyContent: 'space-between',
     marginBottom: 6,
