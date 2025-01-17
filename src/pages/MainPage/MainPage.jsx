@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {TabView, TabBar} from 'react-native-tab-view';
-import MainTabScreen from '../../components/MainTabScreen';
+import MainTabScreen from './MainTabScreen';
 import {response_hot} from '../../assets/DummyData_home';
 import Logo from '../../assets/logo_temp.png';
 
