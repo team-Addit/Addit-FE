@@ -14,10 +14,6 @@ const MainPage = () => {
     setHotData(response_hot.data.relays);
     // addiData 연결 추가
   }, []);
-
-  // console.log('setHotData: ', hotData);
-  // console.log('setAddiData: ', addiData);
-
   const tabData = [
     {
       key: 'popular',
