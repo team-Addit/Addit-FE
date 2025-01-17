@@ -3,7 +3,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 import MainPage from './pages/mainPage/MainPage';
 import SearchPage from './pages/SearchPage';
 import UploadPage from './pages/UploadPage';

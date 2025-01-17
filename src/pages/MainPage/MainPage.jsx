@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {TabView, TabBar} from 'react-native-tab-view';
-import MainTabScreen from './MainTabScreen';
+import MainTabScreen from '../../components/MainTabScreen';
 import {response_hot} from '../../assets/DummyData_home';
 import Logo from '../../assets/logo_temp.png';
 
@@ -14,7 +14,6 @@ const MainPage = () => {
     setHotData(response_hot.data.relays);
     // addiData 연결 추가
   }, []);
-
   const tabData = [
     {
       key: 'popular',
