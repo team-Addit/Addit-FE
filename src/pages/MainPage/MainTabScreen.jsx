@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
-import Carousel from '../components/Carousel';
-import Collaborators from './Collaborators';
-import ImageRow from './ImageRow';
+import Carousel from '../../components/mainPage/Carousel';
+import Collaborators from '../../components/Collaborators';
+import ImageRowGrid from '../../components/mainPage/ImageRowGrid';
 
 const MainTabScreen = ({tabKey, data}) => {
   const [focusedRelayId, setFocusedRelayId] = useState(null);
@@ -58,7 +58,7 @@ const MainTabScreen = ({tabKey, data}) => {
             images={currentRelay.memberImages}
           />
           <Text style={styles.title}>{currentRelay.relayTitle}</Text>
-          <ImageRow
+          <ImageRowGrid
             data={currentRelay?.tickles}
             onImageSelect={handleImageSelect}
           />

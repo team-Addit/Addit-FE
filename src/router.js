@@ -4,7 +4,7 @@ import React from 'react';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-import MainPage from './pages/MainPage/MainPage';
+import MainPage from './pages/mainPage/MainPage';
 import SearchPage from './pages/SearchPage';
 import UploadPage from './pages/UploadPage';
 import AlarmPage from './pages/AlarmPage';

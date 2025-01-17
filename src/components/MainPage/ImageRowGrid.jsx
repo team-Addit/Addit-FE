@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const ImageRow = ({data, onImageSelect}) => {
+const ImageRowGrid = ({data, onImageSelect}) => {
   const numColumns = 5;
 
   const imageWidth =
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImageRow;
+export default ImageRowGrid;
