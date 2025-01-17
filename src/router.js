@@ -18,12 +18,13 @@ const MainTab = () => {
       tabBar={renderBottomTabBar}
       screenOptions={{
         headerShown: false,
+        tabBarStyle: {backgroundColor: 'transparent'},
       }}>
       <Tab.Screen name="Home" component={MainPage} />
       <Tab.Screen name="Search" component={SearchPage} />
       <Tab.Screen name="Upload" component={UploadPage} />
-      <Tab.Screen name="Alarm" component={AlarmPage} />
-      <Tab.Screen name="MyPage" component={Mypage} />
+      <Tab.Screen name="Noti" component={AlarmPage} />
+      <Tab.Screen name="MY" component={Mypage} />
     </Tab.Navigator>
   );
 };
