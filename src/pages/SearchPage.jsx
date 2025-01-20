@@ -1,20 +1,92 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {StyleSheet, SafeAreaView, FlatList} from 'react-native';
+import RelayCard from '../components/RelayCard';
 
 const SearchPage = () => {
+  const data = [
+    {
+      id: '1',
+      title: '안녕하세요',
+      imageUrl:
+        'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
+      count: 3,
+      tags: [
+        '어떻게이별까지사랑하겠어널사랑하는거지사랑이라는이유로서로를포기',
+        '안녕',
+        '안녕3',
+      ],
+    },
+    {
+      id: '2',
+      title: '반갑습니다',
+      imageUrl:
+        'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
+      count: 5,
+      tags: ['반갑', '반갑반갑하이하이하이하이하이하이'],
+    },
+    {
+      id: '3',
+      title: '오늘은',
+      imageUrl:
+        'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
+      count: 2,
+      tags: ['태그1', '태그2', '태그3'],
+    },
+    {
+      id: '4',
+      title: '즐거운 날',
+      imageUrl:
+        'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
+      count: 4,
+      tags: ['태그1', '태그2', '태그xormxordfsmxorm3'],
+    },
+    {
+      id: '5',
+      title: '행복한 하루',
+      imageUrl:
+        'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
+      count: 1,
+      tags: ['태그1', '태그2', '태그3'],
+    },
+    {
+      id: '6',
+      title: '기분 좋은 날',
+      imageUrl:
+        'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
+      count: 3,
+      tags: ['태그1', '태그2', '태그3'],
+    },
+  ];
+
   return (
-    <View style={styles.container}>
-      <Text>SearchPage</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={({item}) => (
+          <RelayCard
+            title={item.title}
+            imageUrl={item.imageUrl}
+            count={item.count}
+            tags={item.tags}
+          />
+        )}
+        keyExtractor={item => item.id}
+        numColumns={2}
+        columnWrapperStyle={styles.columnWrapper} // Added custom style for the columns
+      />
+    </SafeAreaView>
   );
 };
-
-export default SearchPage;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    paddingTop: 20,
+  },
+  columnWrapper: {
+    justifyContent: 'space-between', // Ensure the cards are spaced out correctly
+    marginHorizontal: 10,
   },
 });
+
+export default SearchPage;
