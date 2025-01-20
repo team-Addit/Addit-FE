@@ -27,15 +27,15 @@ const TabIcon = ({routeName, focused}) => {
   const iconProps = {width: 28, height: 28};
 
   const icons = {
-    Home: focused ? <HomeOn {...iconProps} /> : <HomeOff {...iconProps} />,
-    Search: focused ? (
-      <SearchOn {...iconProps} />
+    홈: focused ? <HomeOn {...iconProps} /> : <HomeOff {...iconProps} />,
+    검색: focused ? <SearchOn {...iconProps} /> : <SearchOff {...iconProps} />,
+    업로드: <Upload width={40} height={40} />,
+    알림: focused ? <NotiOn {...iconProps} /> : <NotiOff {...iconProps} />,
+    마이페이지: focused ? (
+      <MyPageOn {...iconProps} />
     ) : (
-      <SearchOff {...iconProps} />
+      <MyPageOff {...iconProps} />
     ),
-    Upload: <Upload width={40} height={40} />,
-    Noti: focused ? <NotiOn {...iconProps} /> : <NotiOff {...iconProps} />,
-    MY: focused ? <MyPageOn {...iconProps} /> : <MyPageOff {...iconProps} />,
   };
 
   return icons[routeName] || null;
@@ -50,16 +50,16 @@ const BottomTab = () => {
     tabBarIcon: ({focused}) => (
       <TabIcon routeName={route.name} focused={focused} />
     ),
-    tabBarLabel: route.name === 'Upload' ? () => null : undefined, // Upload 페이지는 레이블을 표시하지 않음
+    tabBarLabel: route.name === '업로드' ? () => null : undefined, // Upload 페이지는 레이블을 표시하지 않음
   });
 
   return (
     <Tab.Navigator screenOptions={screenOptions}>
-      <Tab.Screen name="Home" component={MainPage} />
-      <Tab.Screen name="Search" component={SearchPage} />
-      <Tab.Screen name="Upload" component={UploadPage} />
-      <Tab.Screen name="Noti" component={AlarmPage} />
-      <Tab.Screen name="MY" component={Mypage} />
+      <Tab.Screen name="홈" component={MainPage} />
+      <Tab.Screen name="검색" component={SearchPage} />
+      <Tab.Screen name="업로드" component={UploadPage} />
+      <Tab.Screen name="알림" component={AlarmPage} />
+      <Tab.Screen name="마이페이지" component={Mypage} />
     </Tab.Navigator>
   );
 };
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 70,
     paddingTop: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 16,
     borderTopLeftRadius: 100,
     borderTopRightRadius: 100,
     backgroundColor: '#fff',
