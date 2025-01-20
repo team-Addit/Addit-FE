@@ -1,144 +1,85 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-// 모든 SVG 파일을 직접 import
-import HomeIcon from '../assets/bottomTab/home_on.svg';
-import HomeIconOff from '../assets/bottomTab/home_off.svg';
-import SearchIcon from '../assets/bottomTab/search_on.svg';
-import SearchIconOff from '../assets/bottomTab/search_off.svg';
-import UploadIcon from '../assets/bottomTab/upload.svg';
-import NotiIcon from '../assets/bottomTab/notify_on.svg';
-import NotiIconOff from '../assets/bottomTab/notifiy_off.svg';
-import MyPageIcon from '../assets/bottomTab/mypage_on.svg';
-import MyPageIconOff from '../assets/bottomTab/mypage_off.svg';
+// Pages
+import MainPage from '../pages/mainPage/MainPage';
+import SearchPage from '../pages/SearchPage';
+import UploadPage from '../pages/UploadPage';
+import AlarmPage from '../pages/AlarmPage';
+import Mypage from '../pages/MyPage';
 
-function BottomTab({state, descriptors, navigation}) {
+// SVG Icons
+import HomeOn from '../assets/bottomTab/home_on.svg';
+import HomeOff from '../assets/bottomTab/home_off.svg';
+import SearchOn from '../assets/bottomTab/search_on.svg';
+import SearchOff from '../assets/bottomTab/search_off.svg';
+import Upload from '../assets/bottomTab/upload.svg';
+import NotiOn from '../assets/bottomTab/notify_on.svg';
+import NotiOff from '../assets/bottomTab/notify_off.svg';
+import MyPageOn from '../assets/bottomTab/mypage_on.svg';
+import MyPageOff from '../assets/bottomTab/mypage_off.svg';
+
+const Tab = createBottomTabNavigator();
+
+// Tab 아이콘을 컴포넌트로 분리하여 관리
+const TabIcon = ({routeName, focused}) => {
+  const iconProps = {width: 28, height: 28};
+
   const icons = {
-    Home: {
-      focused: HomeIcon,
-      default: HomeIconOff,
-    },
-    Search: {
-      focused: SearchIcon,
-      default: SearchIconOff,
-    },
-    Upload: {
-      default: UploadIcon,
-    },
-    Noti: {
-      focused: NotiIcon,
-      default: NotiIconOff,
-    },
-    MY: {
-      focused: MyPageIcon,
-      default: MyPageIconOff,
-    },
+    Home: focused ? <HomeOn {...iconProps} /> : <HomeOff {...iconProps} />,
+    Search: focused ? (
+      <SearchOn {...iconProps} />
+    ) : (
+      <SearchOff {...iconProps} />
+    ),
+    Upload: <Upload width={40} height={40} />,
+    Noti: focused ? <NotiOn {...iconProps} /> : <NotiOff {...iconProps} />,
+    MY: focused ? <MyPageOn {...iconProps} /> : <MyPageOff {...iconProps} />,
   };
 
-  const labels = {
-    Home: '홈',
-    Search: '검색',
-    Upload: '',
-    Noti: '알림',
-    MY: '마이페이지',
-  };
+  return icons[routeName] || null;
+};
+
+const BottomTab = () => {
+  const screenOptions = ({route}) => ({
+    tabBarStyle: styles.tabBar,
+    tabBarActiveTintColor: '#4574EC',
+    tabBarInactiveTintColor: '#b0b0b0',
+    headerShown: false,
+    tabBarIcon: ({focused}) => (
+      <TabIcon routeName={route.name} focused={focused} />
+    ),
+    tabBarLabel: route.name === 'Upload' ? () => null : undefined, // Upload 페이지는 레이블을 표시하지 않음
+  });
 
   return (
-    <View style={styles.container}>
-      {state.routes.map((route, index) => {
-        const {options} = descriptors[route.key];
-        const label = labels[route.name];
-        const isFocused = state.index === index;
-
-        const onPress = () => {
-          const event = navigation.emit({
-            type: 'tabPress',
-            target: route.key,
-            canPreventDefault: true,
-          });
-
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
-
-        const onLongPress = () => {
-          navigation.emit({
-            type: 'tabLongPress',
-            target: route.key,
-          });
-        };
-
-        const isUpload = route.name === 'Upload';
-
-        // 동적 아이콘 렌더링
-        let IconComponent = icons[route.name].default; // 기본 아이콘
-        if (isFocused && icons[route.name].focused) {
-          IconComponent = icons[route.name].focused; // focused 상태일 때 아이콘
-        }
-
-        return (
-          <TouchableOpacity
-            key={route.key}
-            accessibilityRole="button"
-            accessibilityState={isFocused ? {selected: true} : {}}
-            onPress={onPress}
-            onLongPress={onLongPress}
-            style={[styles.tab, isUpload && styles.uploadTab]}>
-            <View style={[isUpload && styles.uploadButton]}>
-              {/* 선택된 IconComponent 렌더링 */}
-              <IconComponent width={24} height={24} />
-            </View>
-            {!isUpload && (
-              <Text
-                style={{
-                  color: isFocused ? '#4574EC' : '#222',
-                  marginTop: 4,
-                  fontSize: 8,
-                }}>
-                {label}
-              </Text>
-            )}
-          </TouchableOpacity>
-        );
-      })}
-    </View>
+    <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Screen name="Home" component={MainPage} />
+      <Tab.Screen name="Search" component={SearchPage} />
+      <Tab.Screen name="Upload" component={UploadPage} />
+      <Tab.Screen name="Noti" component={AlarmPage} />
+      <Tab.Screen name="MY" component={Mypage} />
+    </Tab.Navigator>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    height: 80,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginHorizontal: 16,
-    paddingHorizontal: '6%',
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 100,
-    borderTopRightRadius: 100,
-  },
-  tab: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  uploadTab: {
-    zIndex: 1,
-    marginTop: -20,
-  },
-  uploadButton: {
-    width: 40,
-    height: 50,
-    borderRadius: 30,
-    backgroundColor: '#7FA3FF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    elevation: 5,
-  },
-});
+};
 
 export default BottomTab;
+
+const styles = StyleSheet.create({
+  tabBar: {
+    position: 'absolute',
+    flexDirection: 'row',
+    height: 70,
+    paddingTop: 10,
+    paddingHorizontal: 10,
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
+    backgroundColor: '#fff',
+    marginHorizontal: 10,
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 3},
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+  },
+});
