@@ -1,10 +1,23 @@
 import React from 'react';
-import {StyleSheet, View, Text, ImageBackground} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import TagList from './TagList';
 
-const RelayCard = ({title, imageUrl, count, tags}) => {
+const RelayCard = ({id, title, imageUrl, count, tags}) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate('RelayPage', {id});
+  };
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={handlePress} style={styles.container}>
       <ImageBackground
         source={{uri: imageUrl}}
         style={styles.backgroundImage}
@@ -22,7 +35,7 @@ const RelayCard = ({title, imageUrl, count, tags}) => {
           </View>
         </View>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -34,12 +47,12 @@ const styles = StyleSheet.create({
     aspectRatio: 3 / 4,
     borderRadius: 10,
     overflow: 'hidden',
-    marginVertical: 4, //카드간 간격
+    marginVertical: 4, // 카드간 간격
     marginHorizontal: 4,
   },
   backgroundImage: {
     flex: 1,
-    padding: 14, //박스 패딩
+    padding: 14, // 박스 패딩
     justifyContent: 'space-between',
   },
   image: {
@@ -65,9 +78,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-  },
-  textContainer: {
-    // 같은 스타일을 묶어서 관리
   },
   tagList: {
     marginBottom: 10, // TagList와의 간격을 추가하여 화면 배치 조정

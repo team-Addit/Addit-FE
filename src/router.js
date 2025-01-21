@@ -9,6 +9,7 @@ import UploadPage from './pages/UploadPage';
 import AlarmPage from './pages/AlarmPage';
 import Mypage from './pages/MyPage';
 import BottomTab from './components/BottomTab';
+import RelayPage from './pages/RelayPage';
 // import SplashPage from './pages/SplashPage';
 const renderBottomTabBar = props => <BottomTab {...props} />;
 
@@ -35,6 +36,7 @@ const Router = () => {
       screenOptions={{headerShown: false}}>
       {/* <Stack.Screen name="Splash" component={SplashPage} /> */}
       <Stack.Screen name="MainTab" component={MainTab} />
+      <Stack.Screen name="RelayPage" component={RelayPage} />
     </Stack.Navigator>
   );
 };

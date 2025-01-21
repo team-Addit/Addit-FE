@@ -78,6 +78,7 @@ const SearchPage = () => {
         data={data}
         renderItem={({item}) => (
           <RelayCard
+            id={item.id}
             title={item.title}
             imageUrl={item.imageUrl}
             count={item.count}
