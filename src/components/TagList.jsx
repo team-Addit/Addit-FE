@@ -4,57 +4,76 @@ import {View, Text, StyleSheet} from 'react-native';
 const TagList = ({tags}) => {
   const [visibleTags, setVisibleTags] = useState([]);
   const [containerWidth, setContainerWidth] = useState(0);
+  const [tagWidths, setTagWidths] = useState({}); // 태그별 너비 저장
+  const SPACING = 20; // 여유 공간 설정
 
-  // 부모 컴포넌트 크기 측전
   const onLayout = event => {
     const {width} = event.nativeEvent.layout;
     setContainerWidth(width);
   };
 
-  const calculateTagWidth = text => {
-    const charWidth = 6; // 가정
-    return text.length * charWidth + 20; // 여백 추가
-  };
-
   const processTags = () => {
+    setVisibleTags([]);
     let tagsToRender = [];
-    let totalLength = 10;
+    let totalLength = 0;
 
     for (let i = 0; i < tags.length; i++) {
       const tag = tags[i];
-      const tagWidth = calculateTagWidth(tag);
+      const tagWidth = tagWidths[tag] || 0;
+
+      // 합산 길이가 컨테이너 너비 + 여유 공간을 초과하면 중단
+      if (totalLength + tagWidth > containerWidth + SPACING) {
+        tagsToRender.push({text: tag, ellipsizeMode: 'tail', isLast: true});
+        break;
+      }
+
       totalLength += tagWidth;
-      //합산길이 > 총길이 : ...처리하고 더 추가 X
+
+      // 합산 길이가 컨테이너 너비를 초과하면 마지막 태그로 처리
       if (totalLength > containerWidth) {
         tagsToRender.push({text: tag, ellipsizeMode: 'tail', isLast: true});
         break;
       }
-      //합산길이 < 총길이 : 렌더링하고 다음거 받아오기
-      else {
-        //합산길이 > 총길이-60 : ...처리하고 더 추가
-        if (totalLength > containerWidth - 40) {
-          tagsToRender.push({text: tag, ellipsizeMode: 'tail', isLast: false});
-          break;
-        }
-        tagsToRender.push({text: tag, ellipsizeMode: '', isLast: false});
-      }
+
+      tagsToRender.push({text: tag, ellipsizeMode: '', isLast: false});
     }
 
     setVisibleTags(tagsToRender);
   };
 
   useEffect(() => {
-    if (containerWidth > 0) {
+    // 태그 너비가 모두 측정된 후 처리
+    if (containerWidth > 0 && Object.keys(tagWidths).length === tags.length) {
       processTags();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [containerWidth, tags]);
+  }, [containerWidth, tags, tagWidths]);
+
+  const onTagLayout = (tag, event) => {
+    const {width} = event.nativeEvent.layout;
+
+    setTagWidths(prev => {
+      // 기존 값과 동일하면 다시 렌더링하지 않음
+      if (prev[tag] === width + 8) {
+        return prev;
+      }
+      return {...prev, [tag]: width + 8}; // 태그 너비 + 여백
+    });
+  };
 
   return (
     <View style={styles.container} onLayout={onLayout}>
+      {tags.map((tag, index) => (
+        <Text
+          key={`hidden-${index}`}
+          style={[styles.tag, {opacity: 0, position: 'absolute'}]} // 초기 렌더링 감추기
+          onLayout={event => onTagLayout(tag, event)}>
+          #{tag}
+        </Text>
+      ))}
       {visibleTags.map((tag, index) => (
         <Text
-          key={index}
+          key={`visible-${index}`}
           numberOfLines={1}
           ellipsizeMode={tag.ellipsizeMode}
           style={[
