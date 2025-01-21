@@ -10,11 +10,7 @@ const SearchPage = () => {
       imageUrl:
         'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
       count: 3,
-      tags: [
-        '어떻게이별까지사랑하겠어널사랑하는거지사랑이라는이유로서로를포기',
-        '안녕',
-        '안녕3',
-      ],
+      tags: ['어떻게이별까지사랑하겟하이하이하이ㅏ힝', '하이하이하이하이하이'],
     },
     {
       id: '2',
@@ -22,7 +18,10 @@ const SearchPage = () => {
       imageUrl:
         'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
       count: 5,
-      tags: ['반갑', '반갑반갑하이하이하이하이하이하이'],
+      tags: [
+        '반가가',
+        '반갑반갑하이하이하이하이하이dfsdkfjsalfdsalkfjklsda하이',
+      ],
     },
     {
       id: '3',
