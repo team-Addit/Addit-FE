@@ -21,21 +21,21 @@ const TagList = ({tags}) => {
       const tag = tags[i];
       const tagWidth = tagWidths[tag] || 0;
 
-      // 합산 길이가 컨테이너 너비 + 여유 공간을 초과하면 중단
-      if (totalLength + tagWidth > containerWidth + SPACING) {
-        tagsToRender.push({text: tag, ellipsizeMode: 'tail', isLast: true});
-        break;
-      }
-
       totalLength += tagWidth;
 
-      // 합산 길이가 컨테이너 너비를 초과하면 마지막 태그로 처리
+      // 합산 길이가 > 부모 너비 : ...처리 & 더이상 추가 X
       if (totalLength > containerWidth) {
         tagsToRender.push({text: tag, ellipsizeMode: 'tail', isLast: true});
         break;
+      } else {
+        // 합산 길이 < 부모 너비 - 여유 공간 : ...처리 & 더이상 추가 X
+        if (totalLength > containerWidth - SPACING) {
+          tagsToRender.push({text: tag, ellipsizeMode: 'tail', isLast: false});
+          break;
+        } else {
+          tagsToRender.push({text: tag, ellipsizeMode: '', isLast: false});
+        }
       }
-
-      tagsToRender.push({text: tag, ellipsizeMode: '', isLast: false});
     }
 
     setVisibleTags(tagsToRender);

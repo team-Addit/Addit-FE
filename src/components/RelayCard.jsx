@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     aspectRatio: 3 / 4,
     borderRadius: 10,
     overflow: 'hidden',
-    marginVertical: 5,
-    marginHorizontal: 5,
+    marginVertical: 4, //카드간 간격
+    marginHorizontal: 4,
   },
   backgroundImage: {
     flex: 1,

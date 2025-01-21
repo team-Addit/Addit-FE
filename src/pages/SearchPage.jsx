@@ -6,7 +6,6 @@ import RelayCard from '../components/RelayCard';
 const SearchPage = () => {
   const [data, setData] = useState([]);
 
-  // 데이터를 새로 고침하는 함수
   const fetchData = useCallback(() => {
     const newData = [
       {
@@ -15,7 +14,7 @@ const SearchPage = () => {
         imageUrl:
           'https://dimg.donga.com/wps/NEWS/IMAGE/2023/05/12/119255016.1.jpg',
         count: 3,
-        tags: ['어떻게이별까지사랑하겟하이ㅏ힝', '하이하이하이하이하이'],
+        tags: ['어떻게이별까지사겟하이ㅏ힝', '하이하이하이하이하이'],
       },
       {
         id: '2',
@@ -87,7 +86,6 @@ const SearchPage = () => {
         )}
         keyExtractor={item => item.id}
         numColumns={2}
-        columnWrapperStyle={styles.columnWrapper} // Added custom style for the columns
       />
     </SafeAreaView>
   );
@@ -96,11 +94,7 @@ const SearchPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 20,
-  },
-  columnWrapper: {
-    justifyContent: 'space-between', // Ensure the cards are spaced out correctly
-    marginHorizontal: 10,
+    margin: 5,
   },
 });
 
