@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 20,
   },
   text: {
     fontSize: 18,
