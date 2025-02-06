@@ -246,3 +246,234 @@ export const response_hot = {
     ],
   },
 };
+
+export const response_addy = {
+  statusCode: '200',
+  message: '',
+  data: {
+    relays: [
+      {
+        relayId: 101,
+        relayTitle: '내방 꾸미기 챌린지',
+        userName: '방스타',
+        memberCount: 25,
+        memberImages: [
+          'https://fakeimg.pl/360x640/FFD700/ffffff/?text=one',
+          'https://fakeimg.pl/360x640/FFD700/ffffff/?text=two',
+          'https://fakeimg.pl/360x640/FFD700/ffffff/?text=three&',
+        ],
+        tickles: [
+          {
+            tickleId: '201',
+            thumbnail: 'https://fakeimg.pl/360x640/FFD710/ffffff/?text=1',
+            userId: 1001,
+            profileImage:
+              'https://fakeimg.pl/360x640/FFD700/ffffff/?text=방스타',
+            nickname: '방스타',
+          },
+          {
+            tickleId: '202',
+            thumbnail: 'https://fakeimg.pl/360x640/FFD720/ffffff/?text=2',
+            userId: 1002,
+            profileImage:
+              'https://fakeimg.pl/360x640/FFD700/ffffff/?text=꾸미왕',
+            nickname: '꾸미왕',
+          },
+          {
+            tickleId: '203',
+            thumbnail: 'https://fakeimg.pl/360x640/FFD730/ffffff/?text=3',
+            userId: 1003,
+            profileImage:
+              'https://fakeimg.pl/360x640/FFD700/ffffff/?text=홈마스터',
+            nickname: '홈마스터',
+          },
+          {
+            tickleId: '204',
+            thumbnail: 'https://fakeimg.pl/360x640/FFD740/ffffff/?text=4',
+            userId: 1004,
+            profileImage:
+              'https://fakeimg.pl/360x640/FFD700/ffffff/?text=소품왕',
+            nickname: '소품왕',
+          },
+          {
+            tickleId: '205',
+            thumbnail: 'https://fakeimg.pl/360x640/FFD700/ffffff/?text=5',
+            userId: 1005,
+            profileImage:
+              'https://fakeimg.pl/360x640/FFD700/ffffff/?text=꾸미고수',
+            nickname: '꾸미고수',
+          },
+        ],
+      },
+      {
+        relayId: 102,
+        relayTitle: '최고의 책상 만들기',
+        userName: '책상스타',
+        memberCount: 20,
+        memberImages: [
+          'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상1&brightness=95',
+          'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상2&brightness=105',
+          'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상3&brightness=100',
+        ],
+        tickles: [
+          {
+            tickleId: '301',
+            thumbnail:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상%20만들기',
+            userId: 1006,
+            profileImage:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상스타',
+            nickname: '책상스타',
+          },
+          {
+            tickleId: '302',
+            thumbnail:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상%20만들기',
+            userId: 1007,
+            profileImage:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=꾸미천재',
+            nickname: '꾸미천재',
+          },
+          {
+            tickleId: '303',
+            thumbnail:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상%20만들기',
+            userId: 1008,
+            profileImage:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=디자인러버',
+            nickname: '디자인러버',
+          },
+          {
+            tickleId: '304',
+            thumbnail:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상%20만들기',
+            userId: 1009,
+            profileImage:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=정리왕',
+            nickname: '정리왕',
+          },
+          {
+            tickleId: '305',
+            thumbnail:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상%20만들기',
+            userId: 1010,
+            profileImage:
+              'https://fakeimg.pl/360x640/87CEEB/ffffff/?text=책상고수',
+            nickname: '책상고수',
+          },
+        ],
+      },
+      {
+        relayId: 103,
+        relayTitle: '완벽한 홈카페 만들기',
+        userName: '카페마스터',
+        memberCount: 30,
+        memberImages: [
+          'https://fakeimg.pl/360x640/FF4500/ffffff/?text=카페1&brightness=80',
+          'https://fakeimg.pl/360x640/FF4500/ffffff/?text=카페2&brightness=120',
+          'https://fakeimg.pl/360x640/FF4500/ffffff/?text=카페3&brightness=100',
+        ],
+        tickles: [
+          {
+            tickleId: '401',
+            thumbnail: 'https://fakeimg.pl/360x640/FF4500/ffffff/?text=홈카페',
+            userId: 1011,
+            profileImage:
+              'https://fakeimg.pl/360x640/FF4500/ffffff/?text=카페마스터',
+            nickname: '카페마스터',
+          },
+          {
+            tickleId: '402',
+            thumbnail: 'https://fakeimg.pl/360x640/FF4500/ffffff/?text=홈카페',
+            userId: 1012,
+            profileImage:
+              'https://fakeimg.pl/360x640/FF4500/ffffff/?text=커피왕',
+            nickname: '커피왕',
+          },
+          {
+            tickleId: '403',
+            thumbnail: 'https://fakeimg.pl/360x640/FF4500/ffffff/?text=홈카페',
+            userId: 1013,
+            profileImage:
+              'https://fakeimg.pl/360x640/FF4500/ffffff/?text=에스프레소',
+            nickname: '에스프레소',
+          },
+          {
+            tickleId: '404',
+            thumbnail: 'https://fakeimg.pl/360x640/FF4500/ffffff/?text=홈카페',
+            userId: 1014,
+            profileImage:
+              'https://fakeimg.pl/360x640/FF4500/ffffff/?text=라떼천재',
+            nickname: '라떼천재',
+          },
+          {
+            tickleId: '405',
+            thumbnail: 'https://fakeimg.pl/360x640/FF4500/ffffff/?text=홈카페',
+            userId: 1015,
+            profileImage:
+              'https://fakeimg.pl/360x640/FF4500/ffffff/?text=디저트러버',
+            nickname: '디저트러버',
+          },
+        ],
+      },
+      {
+        relayId: 104,
+        relayTitle: '조명 인테리어 도전',
+        userName: '빛장인',
+        memberCount: 15,
+        memberImages: [
+          'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명1&brightness=85',
+          'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명2&brightness=115',
+          'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명3&brightness=100',
+        ],
+        tickles: [
+          {
+            tickleId: '501',
+            thumbnail:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명인테리어',
+            userId: 1016,
+            profileImage:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=빛장인',
+            nickname: '빛장인',
+          },
+          {
+            tickleId: '502',
+            thumbnail:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명인테리어',
+            userId: 1017,
+            profileImage:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명러버',
+            nickname: '조명러버',
+          },
+          {
+            tickleId: '503',
+            thumbnail:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명인테리어',
+            userId: 1018,
+            profileImage:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=디자인마스터',
+            nickname: '디자인마스터',
+          },
+          {
+            tickleId: '504',
+            thumbnail:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명인테리어',
+            userId: 1019,
+            profileImage:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명천재',
+            nickname: '조명천재',
+          },
+          {
+            tickleId: '505',
+            thumbnail:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=조명인테리어',
+            userId: 1020,
+            profileImage:
+              'https://fakeimg.pl/360x640/9400D3/ffffff/?text=불빛꿈',
+            nickname: '불빛꿈',
+          },
+        ],
+      },
+    ],
+  },
+};

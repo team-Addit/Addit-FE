@@ -40,7 +40,7 @@ const MainTabScreen = ({tabKey, data}) => {
           ) : (
             <>
               <Text
-                style={styles.highlight}>{`@${currentRelay.username}님`}</Text>
+                style={styles.highlight}>{`@${currentRelay.userName}님`}</Text>
               {'이 참여한 \n릴레이에 동참해보세요'}
             </>
           )}
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: 20,
   },
   text: {
     fontSize: 18,

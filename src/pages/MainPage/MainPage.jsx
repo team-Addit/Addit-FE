@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
 import {TabView, TabBar} from 'react-native-tab-view';
 import MainTabScreen from './MainTabScreen';
-import {response_hot} from '../../assets/DummyData_home';
+import {response_hot, response_addy} from '../../assets/DummyData_home';
 import Logo from '../../assets/logo_temp.png';
 
 const MainPage = () => {
@@ -12,7 +12,7 @@ const MainPage = () => {
 
   useEffect(() => {
     setHotData(response_hot.data.relays);
-    // addiData 연결 추가
+    setAddiData(response_addy.data.relays);
   }, []);
   const tabData = [
     {
